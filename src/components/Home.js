@@ -64,7 +64,7 @@ const Home = (props) => {
                     <h4>Explore</h4>
                 </div>
             </nav>
-            <SeachResult SearchResult={result} />
+            <SeachResult SearchResult={result} usersPerPage={usersPerPage} totalUsers={totalCount}/>
 
             
         </section>

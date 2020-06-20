@@ -1,6 +1,7 @@
 import React from 'react';
+import Pagination from './Paginate';
 
-const SearchResult = ({SearchResult}) => {
+const SearchResult = ({SearchResult, usersPerPage, totalUsers}) => {
   const {items} = SearchResult;
 
   const userInfo = () => {
@@ -53,23 +54,7 @@ const SearchResult = ({SearchResult}) => {
                     <button type="button" className="follow-btn">Follow</button>                
                   </div> 
                   {userInfo()}
-                  <footer className="page-footer">
-                  <ul>
-                    <li>@2020 Github, inc</li>
-                    <li>Terms</li>
-                    <li>Privacy</li>
-                    <li>Security</li>
-                    <li>Status</li>
-                    <li>Help</li>
-                    <li><i className="far fa-star"></i></li>
-                    <li>Contact Github</li>
-                    <li>Pricing</li>
-                    <li>API</li>
-                    <li>Training</li>
-                    <li>Blog</li>
-                    <li>About</li>
-                </ul>
-                 </footer>                                                                                      
+                  <Pagination usersPerPage={usersPerPage} totalUsers={totalUsers}/>
               </div>
             </div>
     )
