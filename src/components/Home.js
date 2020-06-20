@@ -7,7 +7,12 @@ import axios from 'axios';
 const Home = (props) => {
     const [username, setUsername] = useState('');
     const [result, setResult] = useState({});
+    const [currentPage, setCurrentPage] = useState(1);
+    const [usersPerPage, setUsersPerPage] = useState(30);
+    const [totalCount, setTotalCount] = useState(0);
     const {REACT_APP_API_URL, REACT_APP_TOKEN} = process.env;
+
+    
 
     const getList = async () => {
 
@@ -22,7 +27,17 @@ const Home = (props) => {
           let data = await axios(options);
 
           setResult(data.data);
+
+          if(data.data.items > 300){
+            setTotalCount(300);
+          } else {
+          setTotalCount(data.data.total_count);
+        }
     }
+
+    const indexOfLastPage = currentPage * usersPerPage;
+    const indexOfFirstPage = indexOfLastPage - usersPerPage;
+    // const currentUsers = result.items.slice(indexOfLastPage, indexOfLastPage);
 
     const SearchUser = (e) => {
         if(e.key === "Enter"){
