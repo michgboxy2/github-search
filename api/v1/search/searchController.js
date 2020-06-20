@@ -1,29 +1,30 @@
 const rp = require('request-promise');
 const {BASE_URL} = process.env;
+const axios = require('axios');
 
 
 
 exports.searchUser = async (req, res, next) => {
     try {
         const { username } = req.query;
-        if(!username){
-            return res.status(403).send({message: "please enter your username", status: "failed"});
-        }
+        // if(!username){
+        //     return res.status(403).send({message: "please enter your username", status: "failed"});
+        // }
 
 
-        var options = {
-            'method': 'GET',
-            'url': `${BASE_URL}/search/users?q=${username}`,
-            'headers': {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'token cc6cce2aee1c45e57f3e9f13e93b0355538a9fbd',
-                'User-Agent': 'PostmanRuntime/7.18.0'
-            }
-        };
+        // var options = {
+        //     'method': 'GET',
+        //     'url': `${BASE_URL}/search/users?q=${username}`,
+        //     'headers': {
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //         'Authorization': 'token cc6cce2aee1c45e57f3e9f13e93b0355538a9fbd',
+        //         'User-Agent': 'PostmanRuntime/7.18.0'
+        //     }
+        // };
 
-        let data = await rp(options);
+        // let data = await rp(options);
 
-        res.status(200).send(data);
+        // res.status(200).send(data);
 
 
     }catch(e){
