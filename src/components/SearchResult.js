@@ -1,8 +1,12 @@
 import React from 'react';
 import Pagination from './Paginate';
 
-const SearchResult = ({SearchResult, usersPerPage, totalUsers}) => {
+const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
   const {items} = SearchResult;
+
+  if(items){
+    console.log(items.length)
+  }
 
   const userInfo = () => {
     if(items) {
@@ -54,7 +58,7 @@ const SearchResult = ({SearchResult, usersPerPage, totalUsers}) => {
                     <button type="button" className="follow-btn">Follow</button>                
                   </div> 
                   {userInfo()}
-                  <Pagination usersPerPage={usersPerPage} totalUsers={totalUsers}/>
+                  <Pagination usersPerPage={usersPerPage} totalUsers={totalUsers} paginate={paginate}/>
               </div>
             </div>
     )

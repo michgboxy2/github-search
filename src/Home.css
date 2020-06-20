@@ -180,6 +180,13 @@
 .page-footer li {
     /* margin: 0.2rem; */
     padding: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+    border: 0.1rem solid #1aa1f5;
+    background-color: gray;
+    margin: 1rem;
+    cursor: pointer;
 }
 
 .page-footer i {
