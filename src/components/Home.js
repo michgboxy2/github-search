@@ -38,8 +38,6 @@ const Home = (props) => {
 
     const indexOfLastPage = currentPage * usersPerPage;
     const indexOfFirstPage = indexOfLastPage - usersPerPage;
-    // const currentUsers = result.items.slice(indexOfLastPage, indexOfLastPage);
-
     const SearchUser = (e) => {
         if(e.key === "Enter"){
             console.log('yup');

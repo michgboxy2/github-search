@@ -11,13 +11,11 @@ const Pagination = ({usersPerPage, totalUsers, paginate}) => {
         
              <footer className="page-footer">
                   <ul>
-                    <li>{"<<"}</li>
                    {pageNumbers.map(number => (
                      <li key={number} onClick={() => paginate(number)}>
                          {number}
                      </li>
                    ))}
-                   <li>{">>"}</li>
                 </ul>
                  </footer>  
               
