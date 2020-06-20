@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../Home.css';
+import '../home.css';
 import SeachResult from './SearchResult';
 import axios from 'axios';
 
@@ -18,10 +18,9 @@ const Home = (props) => {
         const options = {
             method: 'GET',
             headers: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': 'token '+REACT_APP_TOKEN },
-            // url : `${REACT_APP_API_URL}users/?q=${username}`,
+            // url : `${REACT_APP_API_URL}/search/users/?q=${username}`,
             url: `https://api.github.com/search/users?q=${username}&page=${page}`
           };
-
 
           let data = await axios(options);
           
@@ -32,7 +31,6 @@ const Home = (props) => {
         }
 
           setResult(data.data);
-
         
     }
 
@@ -65,9 +63,7 @@ const Home = (props) => {
                     <h4>Explore</h4>
                 </div>
             </nav>
-            <SeachResult SearchResult={result} usersPerPage={usersPerPage} totalUsers={totalCount} paginate={paginate}/>
-
-            
+            <SeachResult SearchResult={result} usersPerPage={usersPerPage} totalUsers={totalCount} paginate={paginate}/>          
         </section>
     
        </div>
