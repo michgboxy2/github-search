@@ -8,7 +8,7 @@ const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
   const [profileDetails, setProfileDetails] = useState({});
   const [userDetails, setUserDetails] = useState("");
   const [displayProfile, setShowProfile] = useState(false);
-  const {REACT_APP_API_URL, REACT_APP_TOKEN} = process.env;
+  const {REACT_APP_API_URL} = process.env;
 
 
   const showProfile = () => {
@@ -21,9 +21,7 @@ const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
     const getProfile = async () => {
       const options = {
         method: 'GET',
-        headers: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': 'token '+REACT_APP_TOKEN },
-        url: `https://api.github.com/users/${userDetails}`
-        // `https://api.github.com/search/users?q=${username}&page=${page}`
+        url: `${REACT_APP_API_URL}/search/${userDetails}`
       };
 
       let data = await axios(options);
@@ -35,9 +33,6 @@ const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
     getProfile();
   }, [userDetails]);
 
-  const getProfileDetails = () => {
-    // console.log(data);
-  }
 
   const userInfo = () => {
     if(items) {

@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import '../home.css';
 import SeachResult from './SearchResult';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Home = (props) => {
@@ -10,37 +12,42 @@ const Home = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setUsersPerPage] = useState(30);
     const [totalCount, setTotalCount] = useState(0);
-    const {REACT_APP_API_URL, REACT_APP_TOKEN} = process.env;
+    const {REACT_APP_API_URL} = process.env;
 
     
 
     const getList = async (page) => {
-        const options = {
-            method: 'GET',
-            headers: { 'content-type': 'application/x-www-form-urlencoded', 'Authorization': 'token '+REACT_APP_TOKEN },
-            // url : `${REACT_APP_API_URL}/search/users/?q=${username}`,
-            url: `https://api.github.com/search/users?q=${username}&page=${page}`
-          };
-
-          let data = await axios(options);
-          
-          if(data.data.total_count > 300){
-            setTotalCount(300);
-          } else {
-          setTotalCount(data.data.total_count);
+        if(!username){
+            toast.error("Kindly input a name");
+            return;
         }
 
-          setResult(data.data);
+        try{
+            const options = {
+                method: 'GET',
+                url: `${REACT_APP_API_URL}/search?username=${username}&page=${page}`
+              };
+    
+              let data = await axios(options);
+              
+              if(data.data.total_count > 300){
+                setTotalCount(300);
+              } else {
+              setTotalCount(data.data.total_count);
+            }
+    
+              setResult(data.data);
+
+        }catch(e){
+            toast.error("something went wrong");
+            return;
+        }
         
     }
-
-    const indexOfLastPage = currentPage * usersPerPage;
-    const indexOfFirstPage = indexOfLastPage - usersPerPage;
+    
+    
     const SearchUser = (e) => {
-        if(e.key === "Enter"){
-            console.log('yup');
-            getList(currentPage);
-        }
+        if(e.key === "Enter"){ getList(currentPage); }
     }
 
     const paginate = (pageNumber) => {setCurrentPage(pageNumber); getList(pageNumber)};
@@ -56,6 +63,7 @@ const Home = (props) => {
                         className="search-bar-input"
                         onChange={(e) => setUsername(e.target.value)}
                         onKeyPress={SearchUser}
+                        required={true}
                     />
                     <h4>Pull requests</h4>
                     <h4>Issues</h4>
@@ -65,6 +73,7 @@ const Home = (props) => {
             </nav>
             <SeachResult SearchResult={result} usersPerPage={usersPerPage} totalUsers={totalCount} paginate={paginate}/>          
         </section>
+        <ToastContainer />
     
        </div>
         
