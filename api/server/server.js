@@ -13,7 +13,7 @@ const api     = require('../api');
       app.use(cors());
       app.use(morgan("dev"));
 
-      app.use("/api/v1", api);
+      app.use("/", api);
 
       app.use((err, req, res, next) => {
           return res.status(500).json(err);
