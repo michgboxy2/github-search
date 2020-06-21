@@ -64,6 +64,7 @@ const Home = (props) => {
                         onChange={(e) => setUsername(e.target.value)}
                         onKeyPress={SearchUser}
                         required={true}
+                        value={username}
                     />
                     <h4>Pull requests</h4>
                     <h4>Issues</h4>
