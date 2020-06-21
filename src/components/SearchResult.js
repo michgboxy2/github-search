@@ -5,10 +5,11 @@ import axios from 'axios';
 
 const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
   const {items} = SearchResult;
+  const API_URL = 'https://gitsearch7.herokuapp.com';
   const [profileDetails, setProfileDetails] = useState({});
   const [userDetails, setUserDetails] = useState("");
   const [displayProfile, setShowProfile] = useState(false);
-  const {REACT_APP_API_URL} = process.env;
+  const {REACT_APP_API_URL = API_URL} = process.env;
 
 
   const showProfile = () => {
@@ -21,7 +22,7 @@ const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
     const getProfile = async () => {
       const options = {
         method: 'GET',
-        url: `https://gitsearch7.herokuapp.com/search/${userDetails}`
+        url: `${REACT_APP_API_URL}/search/${userDetails}`
       };
 
       let data = await axios(options);
@@ -76,8 +77,8 @@ const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
                     
                     <div className="user">
                         <div className="username">
-                        <h4>Michael King</h4>
-                        <span>Michgboxy</span>
+                        <h5>Githap</h5><span>Your favorite search app</span>
+                        {/* <span>Michgboxy</span> */}
                         </div>
                     </div>
                     </div>

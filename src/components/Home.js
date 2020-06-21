@@ -7,12 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Home = (props) => {
+    const URL = 'https://gitsearch7.herokuapp.com';
     const [username, setUsername] = useState('');
     const [result, setResult] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setUsersPerPage] = useState(30);
     const [totalCount, setTotalCount] = useState(0);
-    const {REACT_APP_API_URL} = process.env;
+    const {REACT_APP_API_URL = URL} = process.env;
 
     
 
@@ -25,7 +26,7 @@ const Home = (props) => {
         try{
             const options = {
                 method: 'GET',
-                url: `https://gitsearch7.herokuapp.com/search?username=${username}&page=${page}`
+                url: `${REACT_APP_API_URL}/search?username=${username}&page=${page}`
               };
     
               let data = await axios(options);

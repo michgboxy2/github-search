@@ -6,4 +6,6 @@ COPY ./ ./
 
 RUN npm install
 
+RUN npm build
+
 CMD ["/bin/bash"]

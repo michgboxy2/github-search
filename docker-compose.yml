@@ -2,7 +2,7 @@
 app:
     container_name: gitapp
     build: ./
-    command: npm prod
+    command: npm start
     working_dir: /usr/src/githubSearch
     ports:
     - "80:80"
