@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../home.css';
+import './home.css';
 import SeachResult from './SearchResult';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
