@@ -25,7 +25,7 @@ const Home = (props) => {
         try{
             const options = {
                 method: 'GET',
-                url: `${REACT_APP_API_URL}/search?username=${username}&page=${page}`
+                url: `https://gitsearch7.herokuapp.com/search?username=${username}&page=${page}`
               };
     
               let data = await axios(options);

@@ -21,7 +21,7 @@ const SearchResult = ({SearchResult, usersPerPage, totalUsers, paginate}) => {
     const getProfile = async () => {
       const options = {
         method: 'GET',
-        url: `${REACT_APP_API_URL}/search/${userDetails}`
+        url: `https://gitsearch7.herokuapp.com/search/${userDetails}`
       };
 
       let data = await axios(options);
