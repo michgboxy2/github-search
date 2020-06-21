@@ -24,7 +24,7 @@ exports.searchUser = async (req, res, next) => {
       method: 'GET',
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': 'token ' + TOKEN
+        'Authorization': 'token '+TOKEN
       },
       url: `${BASE_URL}/search/users?q=${username}&page=${page}`
     };
@@ -52,7 +52,7 @@ exports.getProfileDetails = async (req, res, next) => {
       url: `${BASE_URL}/users/${username}`,
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': 'token ' + TOKEN
+        'Authorization': 'token '+TOKEN
       },
     };
 

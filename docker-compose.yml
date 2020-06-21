@@ -1,0 +1,14 @@
+#Backend API
+app:
+    container_name: gitapp
+    build: ./
+    command: npm prod
+    working_dir: /usr/src/githubSearch
+    ports:
+    - "80:80"
+    environment: 
+        BASE_URL: "https://api.github.com"
+        TOKEN: "cc6cce2aee1c45e57f3e9f13e93b0355538a9fbd"
+    volumes: 
+        - ./:/usr/src/githubSearch
+        - ./usr/src/githubSearch/node_modules
