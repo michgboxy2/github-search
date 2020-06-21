@@ -2,11 +2,10 @@ const { post } = require('request-promise');
 
 const express = require('express'),
       router  = express.Router(),
-      { searchUser, getNoOfFollowers, getProfileDetails }      = require('./searchController');
+      { searchUser, getProfileDetails }      = require('./searchController');
 
       router.route('/')
-      .get(searchUser)
-       .post(getNoOfFollowers);
+      .get(searchUser);
 
       router.route('/:username')
       .get(getProfileDetails);
