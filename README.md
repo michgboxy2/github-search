@@ -6,3 +6,7 @@ Node.js was used to serve as a server proxy for the github API being integrated.
 i) Clone repository
 ii) yarn install to install dependencies
 iii) yarn run dev to start servers.
+
+#########API DOCUMENTATION##########
+https://documenter.getpostman.com/view/5289516/SzzoZFEC
+
