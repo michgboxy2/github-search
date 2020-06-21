@@ -1,11 +1,10 @@
+require('dotenv').config();
 
-const rp = require('request-promise');
 const {
   BASE_URL,
   TOKEN
-} = process.env;
+} = require('../../config');
 const axios = require('axios');
-
 
 
 exports.searchUser = async (req, res, next) => {
@@ -41,41 +40,6 @@ exports.searchUser = async (req, res, next) => {
     });
   }
 
-}
-
-exports.getNoOfFollowers = async (req, res, next) => {
-    try{
-
-  const {
-    username
-  } = req.query;
-  if (!username) {
-    return res.status(403).send({
-      message: "please enter your username",
-      status: "failed"
-    });
-  }
-
-  var options = {
-    method: 'GET',
-    url: `${BASE_URL}/users/${username}/followers`,
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'Authorization': 'token ' + TOKEN
-    },
-  };
-
-  let {data} = await axios(options);
-
-
-    res.status(200).send(data);
-
-    }catch(e){
-      return res.status(422).send({
-        message: e,
-        status: "failed"
-      });
-    }
 }
 
 exports.getProfileDetails = async (req, res, next) => {
