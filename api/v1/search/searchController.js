@@ -23,8 +23,8 @@ exports.searchUser = async (req, res, next) => {
     const options = {
       method: 'GET',
       headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': 'token '+TOKEN
+        // 'content-type': 'application/x-www-form-urlencoded',
+        // 'Authorization': 'token '+TOKEN
       },
       url: `${BASE_URL}/search/users?q=${username}&page=${page}`
     };
@@ -50,9 +50,9 @@ exports.getProfileDetails = async (req, res, next) => {
     var options = {
       method: 'GET',
       url: `${BASE_URL}/users/${username}`,
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': 'token '+TOKEN
+      headers: { //Github API stopped working if Authorization token is passed and works, if not passed. weird.
+        // 'content-type': 'application/x-www-form-urlencoded',
+        // 'Authorization': 'token '+TOKEN
       },
     };
 
